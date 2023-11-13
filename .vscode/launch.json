@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Projetofabsoftm2023Application<projetofabsoftm2023>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.projetofabsoftm2023.Projetofabsoftm2023Application",
+            "projectName": "projetofabsoftm2023",
+            "args": "--spring.profiles.active=dev",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

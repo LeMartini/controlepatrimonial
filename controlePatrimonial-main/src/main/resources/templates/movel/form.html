@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    lang="en">
+
+    <head th:include="layout :: htmlhead"></head>
+
+<style>
+
+  body{
+    background-color:gray;
+  }
+  
+  td th:text{
+    background-color:white;
+  }
+
+    input{
+    font-size: 30px; 
+    text-align: left;
+  }
+
+  .form-group {
+    margin: 20px;
+    font-size: 20px;
+  }
+      
+  .btn-primary:hover {
+    background-color: orange;
+  }
+
+  .form-control{
+    border-color:orange;
+    border-radius: 5px;
+    background-color:#A3A3A1;
+    margin: 5px;
+    padding: 10px 80px;
+  }
+
+  .formularios{
+    margin: 20px 1px 10px 10px;
+  }
+
+  .form1,.form2, .form3{
+    display: inline-block;
+    margin: 1px 1px 5px 15px;
+  }
+
+  .botoes{
+    margin: 1px 1px 5px 800px;
+  }
+
+  label{
+    color: black;
+  }
+
+</style>
+    <body>
+        <nav th:replace="layout :: menu">(menu)</nav>   
+        <main class="container">
+            <!-- <form th:action="@{/bem/(form)}" method="POST" th:object="${bem}"> -->
+                    <form th:action="@{/movel/save}" method="POST" th:object="${movel}">
+
+                        <!-- <div class="form-group">
+                            <label for="txtNmMarca">Nome Marca</label>
+                            <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                        </div> -->
+                        <div class = "formularios">
+                            <div class = "form1">
+                                <!-- <input type="hidden" th:field="*{id}"> -->
+                                <input type="hidden" th:field="*{idMovel}">
+
+                                <!-- <div class="form-group">
+                                    <label for="txttpBem">Tipo Bem</label>
+                                    <input type="text" class="form-control" th:field="*{Tipo Bem}" id="txttpBem">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtCentroCusto">Centro de Custo</label>
+                                    <select class="form-control" th:field="*{nmCentroCusto}" id="txtCentroCusto">
+                                        <option
+                                            th:each="umcentroCusto : ${listaCentroCusto}"
+                                            th:value="${umcentroCusto.idCentroCusto}"
+                                            th:text="${umcentroCusto.nmCentroCusto}"
+                                        ></option>
+                                    </select>
+                                </div>
+                                
+                                <!-- <div class="form-group">
+                                    <label for="txttpBem">Tipo Bem</label>
+                                    <input type="text" class="form-control" th:field="*{Tipo Bem}" id="txttpBem">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txttpBem">Tipo Bem</label>
+                                    <input type="text" class="form-control" th:field="*{tpBem}" id="txttpBem">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <select class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                        <option
+                                            th:each="umaMarca : ${listaMarca}"
+                                            th:value="${umaMarca.idMarca}"
+                                            th:text="${umaMarca.nmMarca}"
+                                        ></option>
+                                    </select>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmModelo">Nome Modelo</label>
+                                    <input type="text" class="form-control" th:field="*{nmModelo}" id="txtNmModelo">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtNmModelo">Nome Modelo</label>
+                                    <input type="text" class="form-control" th:field="*{nmModelo}" id="txtNmModelo">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmItem">nmItem</label>
+                                    <input type="text" class="form-control" th:field="*{nmItem}" id="txtNmItem">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtNmItem">Nome Item</label>
+                                    <select class="form-control" th:field="*{nmItem}" id="txtItem">
+                                        <option
+                                            th:each="umItem : ${listaItem}"
+                                            th:value="${umItem.idItem}"
+                                            th:text="${umItem.nmItem}"
+                                        ></option>
+                                    </select>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtEstadoConservacao">Estado de Conservação</label>
+                                    <input type="text" class="form-control" th:field="*{estadoConservacao}" id="txtEstadoConservacao">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtEstadoConservacao">Estado de Conservação</label>
+                                    <input type="text" class="form-control" th:field="*{estadoConservacao}" id="txtEstadoConservacao">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtLocalInicial">Local Inicial</label>
+                                    <input type="text" class="form-control" th:field="*{localInicial}" id="txtLocalInicial">
+                                </div> -->
+                            </div>
+                            <div class = "form2">
+                                <div class="form-group">
+                                    <label for="txtLocalInicial">Local Inicial</label>
+                                    <input type="text" class="form-control" th:field="*{localInicial}" id="txtLocalInicial">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtLocalAtual">Local Atual</label>
+                                    <input type="text" class="form-control" th:field="*{localAtual}" id="txtLocalAtual">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtLocalAtual">Local Atual</label>
+                                    <input type="text" class="form-control" th:field="*{localAtual}" id="txtLocalAtual">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtFormaAquisicao">Forma de Aquisição</label>
+                                    <input type="text" class="form-control" th:field="*{formaAquisicao}" id="txtFormaAquisicao">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtFormaAquisicao">Forma de Aquisição</label>
+                                    <input type="text" class="form-control" th:field="*{formaAquisicao}" id="txtFormaAquisicao">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtDtDepreciacao">Data de Depreciação</label>
+                                    <input type="date" class="form-control" th:field="*{dtDepreciacao}" id="txtDtDepreciacao">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtDtDepreciacao">Data de Depreciação</label>
+                                    <input type="date" class="form-control" th:field="*{dtDepreciacao}" id="txtDtDepreciacao">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtPercentualDepreciacao">Percentual de Depreciação</label>
+                                    <input type="text" class="form-control" th:field="*{percentualDepreciacao}" id="txtPercentualDepreciacao">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtPercentualDepreciacaoMovel">Percentual de Depreciação</label>
+                                    <input type="text" class="form-control" th:field="*{percentualDepreciacaoMovel}" id="txtPercentualDepreciacaoMovel">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtSituacaoBem">Situação do Bem</label>
+                                    <input type="text" class="form-control" th:field="*{situacaoBem}" id="txtSituacaoBem">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtSituacaoBem">Situação do Bem</label>
+                                    <input type="text" class="form-control" th:field="*{situacaoBem}" id="txtSituacaoBem">
+                                </div>
+                            </div>
+
+                            <div class = "form3">
+                                <div class="form-group">
+                                    <label for="txtNrSerieMovel">Número de Série Móvel</label>
+                                    <input type="text" class="form-control" th:field="*{nrSerieMovel}" id="txtNrSerieMovel">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtForma">Forma</label>
+                                    <input type="text" class="form-control" th:field="*{forma}" id="txtForma">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtData">Data</label>
+                                    <input type="date" class="form-control" th:field="*{data}" id="txtData">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtfornecedor">Fornecedor</label>
+                                    <input type="text" class="form-control" th:field="*{fornecedor}" id="txtfornecedor">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtNrNota">Número da Nota</label>
+                                    <input type="text" class="form-control" th:field="*{nrNota}" id="txtNrNota">
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="txtNmMarca">Nome Marca</label>
+                                    <input type="text" class="form-control" th:field="*{nmMarca}" id="txtNmMarca">
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="txtVidaUtiLmese">Vida Útil Meses</label>
+                                    <input type="text" class="form-control" th:field="*{vidaUtilMeses}" id="txtVidaUtiLmese">
+                                </div>
+                            </div>
+
+
+                        <!-- <div class="form-group">
+                            <button type="submit" class="btn btn-primary"> Enviar </button>
+                        </div> -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark">Enviar</button>
+                            <a href="/movel" class="btn btn-danger">Cancelar</a>
+                        </div>
+
+                    </form>
+                </main>
+            </div>
+            <div th:include="layout :: footer">(footer)</div>
+        </body>
+    </html>

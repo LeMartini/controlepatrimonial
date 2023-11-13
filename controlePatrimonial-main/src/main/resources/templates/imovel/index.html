@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+    lang="en">
+
+    <head th:include="layout :: htmlhead"></head>
+
+<style>
+
+  body{
+    background-color:gray;
+  }
+
+  .table{
+    border-color:orange;
+    border-radius: 5px;
+    background-color:#A3A3A1;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+
+  .btn btn-dark{
+    margin: 5px;
+  }
+
+</style>
+    <body>
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <main class="container">
+            <a th:href="@{/imovel/novo}"
+                class="btn btn-dark" style = "margin: 10px; padding: 10px;font-size: 20px;">Novo Imovel</a>
+            <table class="table" id="tabimovel">
+                <thead>
+                    <tr style = "margin: 10px; padding: 10px;font-size: 20px;">
+                        <th>Id</th>
+                        <th>Tipo Bem</th>
+                        <th>Numero de Série</th>
+                        <th>Forma</th>
+                        <th>Zona</th>
+                        <th>Matricula do Imóvel</th>
+                        <th>Local de Registro</th>
+                        <th>Proprietário Anterior</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr style = "font-size: 20px; text-align: center;" th:each="umImovel : ${listaimovel}">
+                <!-- <tr th:each="umBem : ${listaBem}"> -->
+                        <td th:text="${umImovel.idImovel}"></td>
+                        <td th:text="${umImovel.nrSerieImovel}"></td>
+                        <td th:text="${umImovel.forma}"></td>
+                        <td th:text="${umImovel.zona}"></td>
+                        <td th:text="${umImovel.matriculaImovel}"></td>
+                        <td th:text="${umImovel.localRegistro}"></td>
+                        <td th:text="${umImovel.proprietarioAnterior}"></td>
+                        <!-- <td><a class="btn btn-secondary" th:href="@{'/bem/alterar/' + ${umBem.id }}">Alterar</a>
+                          <td><a class="btn btn-danger" th:href="@{'/bem/remover/' + ${umBem.id }}">Excluir</a>
+                        </td> --> <!-- alterado -->
+                        <td><a class="btn btn-secondary" th:href="@{'/imovel/alterar/' + ${umImovel.idImovel}}">Alterar</a></td>
+                        <td><button
+                          th:data-id="${umImovel.idImovel}"
+                          class="btn btn-danger js-delete">Excluir</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <div class="modal" tabindex="-1" id="modalimovel">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Excluir bem</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Confirma a exclusão do imovel?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" id="btnnao" data-bs-dismiss="modal">Não</button>
+                  <button type="button" class="btn btn-success" id="btnsim">Sim</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div th:include="layout :: footer">(footer)</div>
+        <script th:src="@{/script.js}"></script>
+    </body>
+</html>

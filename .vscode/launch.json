@@ -9,6 +9,16 @@
             "projectName": "projetofabsoftm2023",
             "args": "--spring.profiles.active=dev",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Projetofabsoftm2023Application<projfab2023_2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.univille.projetofabsoftm2023.Projetofabsoftm2023Application",
+            "projectName": "projfab2023_2",
+            "args": "--spring.profiles.active=dev",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

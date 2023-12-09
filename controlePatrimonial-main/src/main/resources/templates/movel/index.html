@@ -37,6 +37,7 @@
                 <thead>
                     <tr style = "font-size: 20px; text-align: center;">
                         <th>Id Movel</th>
+                        <th>Tipo Bem</th>
                         <th>Número de Série</th>
                         <th>Forma</th>
                         <th>Data</th>
@@ -50,6 +51,7 @@
                 <tr style = "font-size: 20px; text-align: center;" th:each="umMovel : ${listamovel}">
                 <!-- <tr th:each="umBem : ${listaBem}"> -->
                         <td th:text="${umMovel.IdMovel}"></td>
+                        <td th:text="${umMovel.tpBem}"></td>
                         <td th:text="${umMovel.nrSerieMovel}"></td>
                         <td th:text="${umMovel.forma}"></td>
                         <td th:text="${umMovel.data}"></td>

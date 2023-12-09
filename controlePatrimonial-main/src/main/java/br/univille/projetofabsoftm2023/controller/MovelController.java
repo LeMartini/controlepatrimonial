@@ -81,8 +81,17 @@ public class MovelController {
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") Movel movel) {
 
+        HashMap<String, Object> dados = new HashMap<>();
+        var listaCentroCusto = centroCustoService.getALL();
+        var listaMarca = marcaService.getALL();
+        var listaItem = itemService.getALL();
+
+        dados.put("movel", movel);
+        dados.put("listaCentroCusto", listaCentroCusto);
+        dados.put("listaMarca", listaMarca);
+        dados.put("listaItem", listaItem);
         return new ModelAndView("movel/form",
-                "movel", movel);
+                dados);
     }
 
     /*

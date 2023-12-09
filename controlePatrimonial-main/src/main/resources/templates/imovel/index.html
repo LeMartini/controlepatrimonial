@@ -31,53 +31,54 @@
     <body>
         <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
-            <a th:href="@{/imovel/novo}"
-                class="btn btn-dark" style = "margin: 10px; padding: 10px;font-size: 20px;">Novo Imovel</a>
-            <table class="table" id="tabimovel">
+            <a th:href="@{/movel/novo}"
+                class="btn btn-dark" style = "margin: 10px; padding: 10px;font-size: 20px;">Novo Movel</a>
+            <table class="table" id="tabmovel">
                 <thead>
-                    <tr style = "margin: 10px; padding: 10px;font-size: 20px;">
-                        <th>Id</th>
+                    <tr style = "font-size: 20px; text-align: center;">
+                        <th>Id Movel</th>
                         <th>Tipo Bem</th>
-                        <th>Numero de Série</th>
+                        <th>Número de Série</th>
                         <th>Forma</th>
-                        <th>Zona</th>
-                        <th>Matricula do Imóvel</th>
-                        <th>Local de Registro</th>
-                        <th>Proprietário Anterior</th>
+                        <th>Data</th>
+                        <th>Fornecedor</th>
+                        <th>Número da Nota</th>
+                        <th>Vida Útil(meses)</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                <tr style = "font-size: 20px; text-align: center;" th:each="umImovel : ${listaimovel}">
+                <tr style = "font-size: 20px; text-align: center;" th:each="umMovel : ${listamovel}">
                 <!-- <tr th:each="umBem : ${listaBem}"> -->
-                        <td th:text="${umImovel.idImovel}"></td>
-                        <td th:text="${umImovel.nrSerieImovel}"></td>
-                        <td th:text="${umImovel.forma}"></td>
-                        <td th:text="${umImovel.zona}"></td>
-                        <td th:text="${umImovel.matriculaImovel}"></td>
-                        <td th:text="${umImovel.localRegistro}"></td>
-                        <td th:text="${umImovel.proprietarioAnterior}"></td>
+                        <td th:text="${umMovel.IdMovel}"></td>
+                        <td th:text="${umMovel.tpBem}"></td>
+                        <td th:text="${umMovel.nrSerieMovel}"></td>
+                        <td th:text="${umMovel.forma}"></td>
+                        <td th:text="${umMovel.data}"></td>
+                        <td th:text="${umMovel.fornecedor}"></td>
+                        <td th:text="${umMovel.nrNota}"></td>
+                        <td th:text="${umMovel.vidaUtilMeses}"></td>
                         <!-- <td><a class="btn btn-secondary" th:href="@{'/bem/alterar/' + ${umBem.id }}">Alterar</a>
                           <td><a class="btn btn-danger" th:href="@{'/bem/remover/' + ${umBem.id }}">Excluir</a>
                         </td> --> <!-- alterado -->
-                        <td><a class="btn btn-secondary" th:href="@{'/imovel/alterar/' + ${umImovel.idImovel}}">Alterar</a></td>
+                        <td><a class="btn btn-secondary" th:href="@{'/movel/alterar/' + ${umMovel.IdMovel}}">Alterar</a></td>
                         <td><button
-                          th:data-id="${umImovel.idImovel}"
+                          th:data-id="${umMovel.IdMovel}"
                           class="btn btn-danger js-delete">Excluir</button></td>
                     </tr>
                 </tbody>
             </table>
         </main>
 
-        <div class="modal" tabindex="-1" id="modalimovel">
+        <div class="modal" tabindex="-1" id="modalmovel">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Excluir bem</h5>
+                  <h5 class="modal-title">Excluir movel?</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>Confirma a exclusão do imovel?</p>
+                  <p>Confirma a exclusão da movel?</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" id="btnnao" data-bs-dismiss="modal">Não</button>

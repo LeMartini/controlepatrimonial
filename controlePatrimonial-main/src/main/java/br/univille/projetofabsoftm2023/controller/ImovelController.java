@@ -98,8 +98,17 @@ public class ImovelController {
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") Imovel imovel) {
 
+        HashMap<String, Object> dados = new HashMap<>();
+        var listaCentroCusto = centroCustoService.getALL();
+        var listaMarca = marcaService.getALL();
+        var listaItem = itemService.getALL();
+
+        dados.put("imovel", imovel);
+        dados.put("listaCentroCusto", listaCentroCusto);
+        dados.put("listaMarca", listaMarca);
+        dados.put("listaItem", listaItem);
         return new ModelAndView("imovel/form",
-                "imovel", imovel);
+                dados);
     }
 
     /*
